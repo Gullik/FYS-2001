@@ -1,0 +1,14 @@
+%Define Variables
+N = 1;
+Eps = 1;
+k = 1;
+
+%Define functions
+T = 0: 1 : 300;
+C = 1./(T.^2).*exp(-Eps./(k.*T));
+
+%Plotting
+plot(C)
+title(['Plot of Heat capacity/Temperature; N=',num2str(N), '; eps=',num2str(Eps), ';  k=',num2str(k)])
+ylabel('Heat capacity')
+xlabel('Temp')
