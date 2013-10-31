@@ -1,0 +1,38 @@
+%Defining variables
+T = 0:300000;
+k = 8.617*10^-5;
+
+%Defining the function
+Z=@(T) 1+exp(-2./(k*T));
+
+%Reading out the numerical values
+Z_1 = Z(300);
+Z_2 = Z(3000);
+Z_3 = Z(30000);
+Z_4 = Z(300000);
+
+%Plotting
+plot(T,Z(T))
+title('Partition function Z(T) = 1+e^{-2eV/kT}')
+xlabel('Temperature')
+ylabel('Z')
+axis([0 T(end) 0 2])
+
+%Problem 6.5
+Ti = 300;
+s= [-0.05 0 0.05];
+s2 = s + 0.05;
+
+%Defining the functions used
+Z2=@(s) sum(exp(-s./(k*Ti)));
+P=@(si,Z) 1./Z*exp(-si/(k*Ti));
+
+%Calculating the partition values Z for the two values of a)
+ai = Z2(s)
+aii = Z2(s2)
+
+%Calculating the probabilities
+Pb = P(s,ai)
+
+%Calculating the probabilites for the shifted ground state
+Pc = P(s+0.05,aii)
